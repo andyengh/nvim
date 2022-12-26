@@ -3,16 +3,13 @@
 require("plugins")
 require("keybindings")
 require("lsp")
-
 -- Plugin specific configs.
 require("plugs.telescope")
-require("plugs.luasnip")
 require("plugs.lspkind")
 require("plugs.cmp")
 require("plugs.nvimtree")
 require("plugs.null-ls")
 require("plugs.barbar")
-require('neoscroll').setup()
 require('vgit').setup()
 require("scrollbar").setup()
 require('nvim-ts-autotag').setup()
@@ -49,7 +46,7 @@ vim.g.onedark_terminal_italics = 2
 vim.cmd[[
   colorscheme sonokai
   set colorcolumn=100
-  autocmd FileType python setlocal shiftwidth=4 tabstop=4
+  autocmd FileType python,xml setlocal shiftwidth=4 tabstop=4
 ]]
 --tab spaces
 vim.opt.tabstop = 2
@@ -82,3 +79,5 @@ vim.api.nvim_exec(
 
 -- Y yank until the end of line.
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+vim.opt.clipboard = 'unnamedplus'
+

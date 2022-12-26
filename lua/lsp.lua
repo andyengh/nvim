@@ -34,7 +34,6 @@ local on_attach = function(_, bufnr)
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
@@ -44,7 +43,11 @@ local on_attach = function(_, bufnr)
 	)
 
 	vim.diagnostic.config({
-		virtual_text = false, -- Turn off inline diagnostics
+    virtual_text = false,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = false,
+    float = true,
 	})
 
 	-- Use this if you want it to automatically show all diagnostics on the
@@ -63,7 +66,7 @@ end
 -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers.
-local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "gopls", "eslint" }
+local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "gopls", "eslint", "cssls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
