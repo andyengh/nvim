@@ -41,8 +41,6 @@ local completeopt=menu,menuone,noselect
       { name = 'path'},
       { name = 'nvim_lsp', group_index = 2  },
       { name = 'luasnip' }, -- For luasnip users.
-    }, {
-      { name = 'buffer' },
     })
   })
 

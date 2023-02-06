@@ -10,7 +10,6 @@ require("plugs.cmp")
 require("plugs.nvimtree")
 require("plugs.null-ls")
 require("plugs.barbar")
-require('vgit').setup()
 require("scrollbar").setup()
 require('nvim-ts-autotag').setup()
 

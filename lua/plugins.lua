@@ -21,7 +21,6 @@ vim.api.nvim_exec(
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -58,29 +57,26 @@ require('packer').startup(function()
       require("copilot_cmp").setup()
     end
   }
-  --
-  --
-  --
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'}
-  use { 
-    'alexghergh/nvim-tmux-navigation',
-    config = function()
-      require'nvim-tmux-navigation'.setup {
-        disable_when_zoomed = true, -- defaults to false
-        keybindings = {
-            left = "<C-h>",
-            down = "<C-j>",
-            up = "<C-k>",
-            right = "<C-l>",
-            last_active = "<C-\\>",
-            next = "<C-Space>",
+  use { 'alexghergh/nvim-tmux-navigation', config = function()
+
+        local nvim_tmux_nav = require('nvim-tmux-navigation')
+
+        nvim_tmux_nav.setup {
+            disable_when_zoomed = true -- defaults to false
         }
-      }
-  end
+
+        vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+        vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+        vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+        vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+        vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+        vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+    end
   }
-  -- completatoin
+  -- completation
   use 'onsails/lspkind.nvim'
   use {
     'windwp/nvim-autopairs',
@@ -89,14 +85,16 @@ require('packer').startup(function()
   use 'jose-elias-alvarez/null-ls.nvim'
   use {'norcalli/nvim-colorizer.lua', config = function() require'colorizer'.setup() end}
   use 'RRethy/vim-illuminate'
-  use {
-    'tanvirtin/vgit.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }
-  }
   use "petertriho/nvim-scrollbar"
   use 'sharkdp/fd'
   use 'AndrewRadev/tagalong.vim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup{
+        current_line_blame = true,
+      }
+    end
+  }
 end
 )
