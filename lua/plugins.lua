@@ -32,7 +32,6 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- completetion
-  
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'

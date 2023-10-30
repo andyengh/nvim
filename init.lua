@@ -3,7 +3,7 @@
 require("plugins")
 require("keybindings")
 require("lsp")
--- Plugin specific configs.
+-- -- Plugin specific configs.
 require("plugs.telescope")
 require("plugs.lspkind")
 require("plugs.cmp")
