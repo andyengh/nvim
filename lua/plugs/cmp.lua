@@ -23,6 +23,7 @@ local completeopt=menu,menuone,noselect
     },
     snippet = {
       expand = function(args)
+        print "expand"
         luasnip.lsp_expand(args.body)
       end
     },
@@ -37,10 +38,10 @@ local completeopt=menu,menuone,noselect
       ['<C-e>'] = cmp.mapping.abort(),
     }),
     sources = cmp.config.sources({
-      { name = 'copilot', group_index = 2},
-      { name = 'path'},
-      { name = 'nvim_lsp', group_index = 2  },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'path'},
+      { name = 'copilot', group_index = 2},
+      { name = 'nvim_lsp', group_index = 2  },
     })
   })
 

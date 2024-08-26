@@ -12,6 +12,7 @@ require("plugs.null-ls")
 require("plugs.barbar")
 require("scrollbar").setup()
 require('nvim-ts-autotag').setup()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Incremental live completion.
 vim.o.inccommand = 'nosplit'

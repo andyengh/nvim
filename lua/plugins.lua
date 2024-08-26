@@ -31,13 +31,16 @@ require('packer').startup(function()
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use {
+    'esensar/nvim-dev-container',
+    dependencies = 'nvim-treesitter/nvim-treesitter'
+  }
   -- completetion
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-nvim-lsp'
-  use 'rafamadriz/friendly-snippets'
-  use { 'L3MON4D3/LuaSnip' }
+  use { 'L3MON4D3/LuaSnip', dependencies = 'rafamadriz/friendly-snippets' }
   use {'hrsh7th/nvim-cmp'}
   use { 'saadparwaiz1/cmp_luasnip' }
   use {
